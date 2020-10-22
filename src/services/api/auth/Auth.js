@@ -15,7 +15,7 @@ class Auth {
   }
 
   async registerUser(payload) {
-    const actionUrl = "/sign_in";
+    const actionUrl = "/sign_up";
     const urlRequest = `${this.url}${actionUrl}`;
 
     return await axios.post(urlRequest, payload);

@@ -2,6 +2,11 @@ import React, { Component } from "react";
 
 import { Formik, Field, ErrorMessage, Form } from "formik";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { actionCreators } from "../store/componentStores/Account";
+
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 
@@ -14,6 +19,19 @@ const validationSchema = yup.object().shape({
 });
 
 class Register extends Component {
+  handleSubmit = (values) => {
+    try {
+      const payload = {
+        email: values.username,
+        password: values.password,
+        mobile: values.mobileNo,
+      };
+      this.props.registerUser(payload);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -33,7 +51,7 @@ class Register extends Component {
             return (
               <div className="col-sm-12 col-md-9 col-lg-9">
                 <Form className="text-left form-container">
-                  <div class="form-group">
+                  <div className="form-group">
                     <label>Email address</label>
                     <input
                       type="email"
@@ -97,4 +115,12 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => ({ data: state });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(actionCreators, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

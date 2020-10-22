@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import { Link } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { actionCreators } from "../store/componentStores/Account";
+
 import * as yup from "yup";
 
 import "./style.css";
@@ -13,8 +18,16 @@ const validationSchema = yup.object().shape({
 });
 
 class Login extends Component {
-  handleSubmit = () => {
-    this.props.history.push("/");
+  handleSubmit = (values) => {
+    const payload = {
+      email: values.username,
+      password: values.password,
+    };
+    this.props.loginUser(payload);
+    if (this.props.data.account.userIsLoggedIn) {
+      this.props.history.push("/");
+    }
+    console.log("payload", this.props.data.account.userIsLoggedIn);
   };
 
   render() {
@@ -83,4 +96,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({ data: state });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(actionCreators, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
