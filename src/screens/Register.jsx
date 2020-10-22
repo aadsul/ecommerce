@@ -85,7 +85,7 @@ class Register extends Component {
                     Submit
                   </button>
                   <div className="mt-2">
-                    <Link to="/">Sign In</Link>
+                    <Link to="/login">Sign In</Link>
                   </div>
                 </Form>
               </div>
