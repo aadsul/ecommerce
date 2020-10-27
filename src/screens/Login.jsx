@@ -24,10 +24,6 @@ class Login extends Component {
       password: values.password,
     };
     this.props.loginUser(payload);
-    if (this.props.data.account.userIsLoggedIn) {
-      this.props.history.push("/");
-    }
-    console.log("payload", this.props.data.account.userIsLoggedIn);
   };
 
   render() {

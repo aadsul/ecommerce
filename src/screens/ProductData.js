@@ -12,7 +12,7 @@ export const ProductData = [
   },
   {
     id: 2,
-    price: "$35",
+    price: "35",
     img: require("../assets/2.png"),
     name: "Google - Chromecast - Black",
     by: "Google",
@@ -26,7 +26,7 @@ export const ProductData = [
       Intel Core i5-5200U processor and 6GB of DDR3L RAM, this slim touch screen laptop lets you run multiple
       applications without lag. The 1TB hard drive in this Dell Inspiron laptop lets you store multiple music,
       video and document files.`,
-    price: "$499.99",
+    price: "499.99",
     img: require("../assets/3.png"),
     name: `Dell - Inspiron 15.6" Touch-Screen Laptop - Black`,
     by: "Dell",
@@ -41,7 +41,7 @@ export const ProductData = [
       Control most electric devices through voice activation, or schedule a ride with Uber and order a pizza. The
       Amazon Echo Dot voice-controlled device turns any home into a smart home with the Alexa app on a smartphone
       or tablet.`,
-    price: "$49.99",
+    price: "49.99",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ export const ProductData = [
       MacBook Air features up to 8GB of memory, a fifth-generation Intel Core processor, Thunderbolt 2, great
       built-in apps, and all-day battery life.1 Its thin, light, and durable enough to take everywhere you go-and
       powerful enough to do everything once you get there, better.`,
-    price: "$999.99",
+    price: "999.99",
     img: require("../assets/5.png"),
     name: `Apple - MacBook Air® (Latest Model) - 13.3" Display - Silver`,
   },
@@ -60,7 +60,7 @@ export const ProductData = [
     desc: `Only at Best Buy Sharp LC-50LB481U LED Roku TV: Get a TV that enjoys full Internet connectivity with this
       Sharp 49.5-inch smart TV. Full HD resolutions give you plenty of detail whether you're streaming content
       from the Internet using the integrated Roku player or watching via cable`,
-    price: "$429.99",
+    price: "429.99",
     img: require("../assets/6.png"),
     name: `Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Black`,
   },
@@ -73,7 +73,7 @@ export const ProductData = [
       Use voice commands to enjoy music, get answers from Google and manage everyday tasks. Google Home is
       compatible with Android and iOS operating systems, and can control compatible smart devices such as
       Chromecast or Nest.`,
-    price: "$129",
+    price: "129",
   },
   {
     id: 8,
@@ -83,7 +83,7 @@ export const ProductData = [
     desc: `Apple EarPods are white in-ear headphones included with music players and smartphones designed and marketed
       by Apple Inc. They are designed to fit the ear while retaining a new design pushed by Apple alongside the
       iPod and iPod Touch products, with which they were sold together.`,
-    price: "$29.99",
+    price: "29.99",
   },
   {
     id: 9,
@@ -92,7 +92,7 @@ export const ProductData = [
     desc: `Philips hue A19 Smart LED Light Bulb: Get lighting that's as smart as you are. You can easily dim this light
       bulb and set timers and alarms using your smartphone or tablet. Plus, LED technology offers lasting
       illumination while using minimal energy.Get lighting that's as smart as you are.`,
-    price: "$14.99",
+    price: "14.99",
     img: require("../assets/9.png"),
   },
 ];

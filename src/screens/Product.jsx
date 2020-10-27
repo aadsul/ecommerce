@@ -4,7 +4,18 @@ import Navbar from "../component/Navbar";
 
 import { ProductData } from "./ProductData";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { actionCreators } from "../store/componentStores/Product";
+
+const cartArr = [];
 class Product extends Component {
+  handleCart = (val) => {
+    cartArr.push(val);
+    this.props.viewCart(cartArr);
+  };
+
   render() {
     return (
       <Fragment>
@@ -12,7 +23,7 @@ class Product extends Component {
         <div className="" style={{ margin: "8% 4%" }}>
           <div className="row">
             {ProductData.map((val, key) => (
-              <div className="col-sm-12 col-md-3 col-lg-4 mb-3">
+              <div className="col-sm-12 col-md-3 col-lg-4 mb-3" key={key}>
                 <div className="card" key={key}>
                   <img
                     className="card-img-top"
@@ -53,7 +64,8 @@ class Product extends Component {
                       <button
                         type="button"
                         class="btn btn-primary"
-                        onClick={() => this.props.history.push("/cart")}
+                        // onClick={() => this.props.history.push("/cart")}
+                        onClick={() => this.handleCart(val)}
                       >
                         Add to cart
                       </button>
@@ -69,4 +81,12 @@ class Product extends Component {
   }
 }
 
-export default Product;
+// const mapStateToProps = (state) => ({ data: state });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(actionCreators, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Product);

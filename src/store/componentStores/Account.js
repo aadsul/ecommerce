@@ -1,6 +1,8 @@
 import { initializeState } from "../../utility/storageUtils";
 import Auth from "../../services/api/Auth/Auth";
 
+import { history } from "../../history";
+
 const registerAccountSuccessType = "REGISTER_ACCOUNT_SUCCESS";
 const registerAccountLoadingType = "REGISTER_ACCOUNT_LOADING";
 const registerAccountErrorType = "REGISTER_ACCOUNT_ERROR";
@@ -8,6 +10,8 @@ const registerAccountErrorType = "REGISTER_ACCOUNT_ERROR";
 const loginSuccessType = "LOGIN_SUCCESS";
 const loginLoadingType = "LOGIN_LOADING";
 const loginErrorType = "LOGIN_ERROR";
+
+const logoutActionType = "LOGOUT_TYPE";
 
 const setInitialState = "Initial_State";
 
@@ -44,6 +48,7 @@ export const actionCreators = {
       (response) => {
         var loggedInUser;
         if (response.data) {
+          console.log("rrrrrrrrrrrrrrrrr", response.data);
           loggedInUser = response.data.records;
           dispatch({
             type: loginSuccessType,
@@ -51,7 +56,7 @@ export const actionCreators = {
             userIsLoggedIn: true,
           });
 
-          // this.props.history.push("/");
+          history.push("/");
         } else {
           dispatch({
             type: loginErrorType,
@@ -89,6 +94,8 @@ export const actionCreators = {
             type: registerAccountSuccessType,
             registerAccountSucceeded: true,
           });
+
+          history.push("/login");
         }
       })
       .catch((err) => {
@@ -102,6 +109,14 @@ export const actionCreators = {
           registeringAccount: false,
         });
       });
+  },
+
+  logout: () => (dispatch) => {
+    dispatch({
+      type: logoutActionType,
+      currentLoggedInUser: null,
+      userIsLoggedIn: false,
+    });
   },
 };
 
@@ -145,6 +160,13 @@ export const reducer = (state, action) => {
     }
     case loginLoadingType: {
       return { ...state, loggingInAccount: action.loggingInAccount };
+    }
+    case logoutActionType: {
+      return {
+        ...state,
+        userIsLoggedIn: action.userIsLoggedIn,
+        currentLoggedInUser: action.currentLoggedInUser,
+      };
     }
     case loginErrorType: {
       return {
