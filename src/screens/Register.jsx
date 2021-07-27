@@ -10,6 +10,8 @@ import { actionCreators } from "../store/componentStores/Account";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 
+import axios from "axios";
+
 import "./style.css";
 
 const validationSchema = yup.object().shape({
@@ -26,7 +28,10 @@ class Register extends Component {
         password: values.password,
         mobile: values.mobileNo,
       };
+      console.log("register payload",payload)
       this.props.registerUser(payload);
+      // axios.post('http://localhost:8080/register', payload)
+      //   .then((res)=> console.log("data",res));
     } catch (error) {
       console.log("error", error);
     }
@@ -124,3 +129,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
+// export default Register;

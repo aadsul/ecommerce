@@ -8,14 +8,14 @@ class Auth {
   // Login API
 
   async login(payload) {
-    const actionUrl = "/sign_in";
+    const actionUrl = "/login";
     const urlRequest = `${this.url}${actionUrl}`;
 
     return await axios.post(urlRequest, payload);
   }
 
   async registerUser(payload) {
-    const actionUrl = "/sign_up";
+    const actionUrl = "/register";
     const urlRequest = `${this.url}${actionUrl}`;
 
     return await axios.post(urlRequest, payload);

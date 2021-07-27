@@ -56,7 +56,7 @@ export const actionCreators = {
             userIsLoggedIn: true,
           });
 
-          history.push("/");
+          this.push.history.push("/");
         } else {
           dispatch({
             type: loginErrorType,
@@ -117,6 +117,7 @@ export const actionCreators = {
       currentLoggedInUser: null,
       userIsLoggedIn: false,
     });
+    localStorage.clear();
   },
 };
 

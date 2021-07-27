@@ -10,6 +10,8 @@ import { actionCreators } from "../store/componentStores/Account";
 
 import * as yup from "yup";
 
+import axios from "axios";
+
 import "./style.css";
 
 const validationSchema = yup.object().shape({
@@ -23,6 +25,7 @@ class Login extends Component {
       email: values.username,
       password: values.password,
     };
+    console.log("payload",payload)
     this.props.loginUser(payload);
   };
 
@@ -101,3 +104,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+// export default Login;
